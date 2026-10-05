@@ -51,10 +51,13 @@ button:hover{
     </style>
 </head>
 <body>
+<audio src="./Coin Flip Woosh.mp3" id="woosh"></audio>
+
     <h2>Flip a coin!</h2>
     <div id="coinDisplay">
         ❓
     </div>
+
     <img src="" alt="" id="coinImage">
 
 <div id="resultText">
@@ -68,6 +71,7 @@ const TailImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAJE3uq6n
 const CoinDisplay = document.getElementById("coinDisplay")
 const CoinImage = document.getElementById("coinImage")
 const ResultText = document.getElementById("resultText")
+const woosh = document.getElementById("woosh")
 
 
 function flip () {
@@ -76,9 +80,11 @@ function flip () {
     CoinImage.style.display="none"
     ResultText.textContent=''
 
+
     CoinDisplay.style.transform='rotateY(0deg)'
     setTimeout(()=>{
         CoinDisplay.style.transform='rotateY(720deg)'
+        woosh.play()
     },300)
 setTimeout(()=>{
     const result = Math.random()<0.5 ? "Heads": "Tails"
