@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+body{
+    text-align: center;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: rgb(88, 88, 88);
+   margin-top: 75px;
+   font-size: 32px;
+   
+}
+#coinDisplay{
+    font-size: 100px;
+    margin: 20px auto;
+    transition: transform 0.8s ease-in-out;
+
+}
+#coinImage{
+    height: 150px;
+    width: 150px;
+    display: none;
+    margin: 20px auto;
+}
+#resultText{
+    margin: 20px auto;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: rgb(88, 88, 88);
+   font-size: 20px;
+}
+button{
+    background-color: aquamarine;
+    padding: 10px 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: rgb(88, 88, 88);
+   font-size: 16px;
+   border-radius:15px ;
+   border: none;
+    
+}
+button:hover{
+    box-shadow:  0 4px 6px -1px rgba(103, 103, 103, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: rgb(40, 255, 183);
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <h2>Flip a coin!</h2>
+    <div id="coinDisplay">
+        ❓
+    </div>
+    <img src="" alt="" id="coinImage">
+
+<div id="resultText">
+   
+</div>
+<button onclick="flip()">Flip the Coin</button>
+
+<script>
+const HeadImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhOtDUX8yNwMw5A1XpAgUc6gDubgpdWfoAfw&s"
+const TailImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAJE3uq6nTkmcjHvoS49YPiN8egqZd6Aa7vg&s"
+const CoinDisplay = document.getElementById("coinDisplay")
+const CoinImage = document.getElementById("coinImage")
+const ResultText = document.getElementById("resultText")
+
+
+function flip () {
+    CoinDisplay.style.display='block'
+    CoinDisplay.textContent='🪙'
+    CoinImage.style.display="none"
+    ResultText.textContent=''
+
+    CoinDisplay.style.transform='rotateY(0deg)'
+    setTimeout(()=>{
+        CoinDisplay.style.transform='rotateY(720deg)'
+    },300)
+setTimeout(()=>{
+    const result = Math.random()<0.5 ? "Heads": "Tails"
+    CoinDisplay.style.display='none'
+    CoinImage.style.display="block"
+    CoinDisplay.style.transform='rotateY(0deg)'
+    if (result==='Heads') {
+    CoinImage.src=HeadImg
+    ResultText.textContent="Heads!"
+} else {
+     CoinImage.src=TailImg
+      ResultText.textContent="Tails!"
+}
+},900)
+
+
+}
+
+
+</script>
+
+</body>
+</html>
